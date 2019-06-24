@@ -9,13 +9,19 @@ public class Main {
         System.out.println("Hello, I am Eliza! How are you doing?");
         Random rand = new Random();
 
+        boolean caps = false;
+
         while (!input.toLowerCase().equals("q") && !input.toLowerCase().equals("i am feeling great")) {
             input = read.nextLine().toLowerCase();
             String output = "Unknown";
 
             boolean doRespond = false;
             boolean otherResponse = false;
+
             input = input.toLowerCase();
+            if (input.equals("caps")) {
+                caps = true;
+            }
             String rebind = "";
             boolean version2 = false;
             for (String word : input.toLowerCase().split("[^\\w']+")) {
@@ -158,6 +164,10 @@ public class Main {
                 } else {
                     output = "Wait, really? I need more information!";
                 }
+            }
+
+            if (caps) {
+                output = output.toUpperCase();
             }
 
             System.out.println(output);
